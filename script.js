@@ -46,7 +46,7 @@ fi.src = FOTO[0];
 const modal = $("#modal");
 function openModal(title, node, onKey){
   $("#mtitle").textContent = title; $("#mbody").replaceChildren(node); modal._key = onKey;
-  modal.hidden = false; document.body.style.overflow = "hidden"; modal.querySelector(".mclose").focus();
+  applyLang(modal); modal.hidden = false; document.body.style.overflow = "hidden"; modal.querySelector(".mclose").focus();
 }
 function closeModal(){ modal.hidden = true; $("#mbody").replaceChildren(); document.body.style.overflow = ""; }
 modal.addEventListener("click", e => { if(e.target === modal || e.target.closest(".mclose")) closeModal(); });
@@ -94,7 +94,7 @@ const card = (c,i) => `<button class="ccard" data-i="${i}"><div class="cthumb"><
 });
 document.querySelectorAll(".ccard").forEach(b => {
   const c = CERTS[b.dataset.i], box = b.querySelector(".cthumb");
-  renderPdf(c.file, box.querySelector("canvas"), 420).catch(() => box.textContent = "Sertifikat menyusul");
+  renderPdf(c.file, box.querySelector("canvas"), 420).catch(() => { box.textContent = "Sertifikat menyusul"; applyLang(box); });
 });
 async function openCert(c){
   const w = document.createElement("div"); w.className = "certview";
@@ -104,7 +104,7 @@ async function openCert(c){
   const draw = async () => { total = await renderPdf(c.file, can, 1400, n); pg.hidden = total < 2; pg.querySelector("span").textContent = n + " / " + total; };
   w.querySelector(".prev2").onclick = () => { if(n > 1){ n--; draw(); } };
   w.querySelector(".next2").onclick = () => { if(n < total){ n++; draw(); } };
-  try { await draw(); } catch { w.innerHTML = `<p class="muted">Sertifikat belum bisa ditampilkan. Pastikan file ${c.file} sudah diunggah dan web dibuka lewat GitHub Pages atau Live Server.</p>`; }
+  try { await draw(); } catch { w.innerHTML = `<p class="muted">${T("Sertifikat belum bisa ditampilkan. Pastikan file "+c.file+" sudah diunggah dan web dibuka lewat GitHub Pages atau Live Server.","The certificate cannot be displayed. Make sure "+c.file+" has been uploaded and the site is opened via GitHub Pages or Live Server.")}</p>`; }
 }
 
 // Efek ketik pada role
@@ -157,3 +157,69 @@ function frame(){
   if(!reduce) requestAnimationFrame(frame);
 }
 addEventListener("resize", size); size(); frame();
+
+// ===== Bahasa ID/EN =====
+// Kunci = teks Indonesia persis seperti di halaman, nilai = terjemahan Inggris. Tambahkan pasangan baru di sini kalau kamu menambah teks.
+const EN = {
+  "Tentang":"About","Pengalaman":"Experience","Sertifikat":"Certificates","Kontak":"Contact","Project":"Projects",
+  "Halo, saya":"Hi, I'm",
+  "Fresh graduate Informatika dari Universitas Gunadarma dengan pengalaman magang di Divisi IT Operations, Unit System Management PT Bursa Efek Indonesia. Memiliki ketertarikan pada bidang Data Analyst, IT Operations, dan Network Engineering. Saat ini saya sedang magang di IT Infrastruktur PT Bank Mandiri (Persero) Tbk.":"Informatics fresh graduate from Gunadarma University with internship experience in the IT Operations Division, System Management Unit at PT Bursa Efek Indonesia. Interested in Data Analyst, IT Operations, and Network Engineering. I am currently interning in IT Infrastructure at PT Bank Mandiri (Persero) Tbk.",
+  "Lihat project":"View projects","Unduh CV":"Download CV",
+  "Tentang saya":"About me",
+  "Berpengalaman dalam konfigurasi perangkat, migrasi data, pengelolaan aset TI, dokumentasi operasional, serta koordinasi dengan vendor. Menguasai Python, PostgreSQL, MongoDB, Cisco, Tableau, Figma, dan Microsoft Office.":"Experienced in device configuration, data migration, IT asset management, operational documentation, and vendor coordination. Proficient in Python, PostgreSQL, MongoDB, Cisco, Tableau, Figma, and Microsoft Office.",
+  "Memiliki kemampuan komunikasi yang baik, mampu bekerja secara individu maupun tim, serta cepat beradaptasi dengan lingkungan kerja profesional. Saat ini saya magang di IT Infrastruktur (Endpoint Management) PT Bank Mandiri (Persero) Tbk.":"Good communication skills, able to work both individually and in a team, and quick to adapt to a professional work environment. I am currently interning in IT Infrastructure (Endpoint Management) at PT Bank Mandiri (Persero) Tbk.",
+  "IPK S1 Informatika":"GPA, B.Sc. Informatics","Perusahaan tempat magang":"Internship companies","Pelatihan jaringan dan pemrograman":"Networking and programming trainings",
+  "Agustus 2026 - saat ini":"August 2026 - present","April 2026 - Agustus 2026":"April 2026 - August 2026",
+  "IT Infrastruktur (Endpoint Management), magang":"IT Infrastructure (Endpoint Management), Intern",
+  "IT Operations (System Management), magang":"IT Operations (System Management), Intern",
+  "Melakukan validasi dan pendataan perangkat CCTV pada kantor cabang, termasuk pemeriksaan MAC Address, jumlah kamera aktif dan nonaktif, konfigurasi SNTP/email, status perekaman, serta kondisi HDD.":"Validated and recorded CCTV devices at branch offices, including checking MAC addresses, the number of active and inactive cameras, SNTP/email configuration, recording status, and HDD condition.",
+  "Melakukan pengecekan konfigurasi dan kondisi perangkat CCTV melalui aplikasi monitoring, termasuk pemeriksaan playback, sinkronisasi waktu, serta identifikasi kendala konektivitas perangkat.":"Checked CCTV device configuration and condition through a monitoring application, including playback checks, time synchronization, and identifying device connectivity issues.",
+  "Mengidentifikasi jenis perangkat perekam CCTV yang digunakan pada kantor cabang, baik Digital Video Recorder (DVR) maupun Network Video Recorder (NVR).":"Identified the type of CCTV recorder used at branch offices, either Digital Video Recorder (DVR) or Network Video Recorder (NVR).",
+  "Melakukan pengolahan dan validasi data CCTV berdasarkan wilayah operasional (region), termasuk penyelesaian pendataan CCTV Region 6.":"Processed and validated CCTV data by operational region, including completing the CCTV data collection for Region 6.",
+  "Mengeksplorasi fitur Ivanti LANDESK Desktop Management, khususnya fitur Inventory untuk mempelajari pengelolaan inventaris perangkat endpoint.":"Explored Ivanti LANDESK Desktop Management features, especially Inventory, to learn how endpoint device inventory is managed.",
+  "Mempelajari fungsi dan alur pengelolaan perangkat endpoint melalui LANDESK serta mengenal solusi Mobile Device Management (MDM) menggunakan MobileIron.":"Learned the functions and workflow of endpoint device management through LANDESK and became familiar with Mobile Device Management (MDM) using MobileIron.",
+  "Menyiapkan dan melakukan konfigurasi perangkat laptop baru untuk mendukung kebutuhan operasional pengguna.":"Prepared and configured new laptops to support users' operational needs.",
+  "Membantu proses migrasi data dan akun kerja pengguna dari perangkat lama ke perangkat baru.":"Assisted in migrating users' data and work accounts from old devices to new ones.",
+  "Menyusun dokumentasi dan panduan terkait proses peremajaan perangkat laptop.":"Wrote documentation and guides for the laptop refresh process.",
+  "Melakukan instalasi ulang (re-imaging) perangkat lama setelah proses migrasi data selesai dilakukan.":"Re-imaged old devices after data migration was completed.",
+  "Mendukung pengelolaan aset teknologi informasi, termasuk identifikasi dan pemantauan perangkat pada area buffer stock gudang.":"Supported IT asset management, including identifying and monitoring devices in the warehouse buffer stock area.",
+  "Melakukan pendataan dan pembaruan informasi aset IT yang berada di area gudang dan buffer stock.":"Recorded and updated information on IT assets located in the warehouse and buffer stock area.",
+  "Menginput dan mengelola data hard disk disposal sebagai bagian dari proses penghapusan dan pengelolaan aset TI.":"Entered and managed hard disk disposal data as part of the IT asset disposal and management process.",
+  "Melaksanakan proses degaussing pada hard disk untuk memastikan penghapusan data secara aman sesuai prosedur perusahaan.":"Performed degaussing on hard disks to ensure secure data erasure according to company procedures.",
+  "Berkoordinasi dengan vendor melalui email terkait kegiatan preventive maintenance sistem dan aplikasi.":"Coordinated with vendors via email on preventive maintenance of systems and applications.",
+  "Melakukan verifikasi serta memberikan masukan terhadap dokumen laporan maintenance yang dikirimkan vendor untuk memastikan kesesuaian dengan pelaksanaan kegiatan.":"Verified and gave feedback on maintenance reports submitted by vendors to ensure they matched the work performed.",
+  "Membantu administrasi dan pencatatan aktivitas operasional yang berkaitan dengan pengelolaan perangkat dan aset teknologi informasi.":"Assisted with administration and recording of operational activities related to device and IT asset management.",
+  "Pendidikan":"Education","S1 Informatika":"Bachelor of Informatics (S1)","Universitas Gunadarma":"Gunadarma University","2021 - 2025, IPK 3.73":"2021 - 2025, GPA 3.73",
+  "Sertifikasi":"Certifications","Pelatihan":"Training",
+  "Juni 2025 - Juni 2028":"June 2025 - June 2028","Oktober 2025 - Oktober 2028":"October 2025 - October 2028",
+  "Agustus 2022":"August 2022","Februari 2023":"February 2023","Agustus 2023":"August 2023","Februari 2024":"February 2024","27 Mei - 14 Juni 2025":"27 May - 14 June 2025",
+  "Klasifikasi Keamanan Lalu Lintas Jaringan":"Network Traffic Security Classification",
+  "Tugas akhir/skripsi: klasifikasi lalu lintas jaringan dengan Random Forest Classifier.":"Final project/thesis: network traffic classification using a Random Forest Classifier.",
+  "Tugas akhir/skripsi S1 Informatika Universitas Gunadarma tentang klasifikasi keamanan lalu lintas jaringan menggunakan algoritma Random Forest Classifier.":"Undergraduate thesis in Informatics at Gunadarma University on network traffic security classification using the Random Forest Classifier algorithm.",
+  "Game 2D Android dengan Godot Engine":"2D Android Game with Godot Engine",
+  "Penulisan ilmiah: pembuatan aplikasi game 2D berbasis Android.":"Scientific paper: building a 2D Android-based game application.",
+  "Penulisan ilmiah di Universitas Gunadarma tentang pembuatan aplikasi game 2D berbasis Android dengan menggunakan Godot Engine.":"Scientific paper at Gunadarma University on building a 2D Android game application using the Godot Engine.",
+  "Terbuka untuk peluang di IT Operations, Infrastruktur, Data Analyst, dan Network Engineering.":"Open to opportunities in IT Operations, Infrastructure, Data Analyst, and Network Engineering.",
+  "Sebelumnya":"Previous","Berikutnya":"Next","Buka project":"Open project","Sertifikat menyusul":"Certificate coming soon"
+};
+let lang = "id"; try { if(localStorage.getItem("lang") === "en") lang = "en"; } catch {}
+const T = (id, en) => lang === "en" ? en : id;
+const orig = new WeakMap(), norm = s => s.replace(/\s+/g, " ").trim();
+function applyLang(root = document.body){
+  const w = document.createTreeWalker(root, NodeFilter.SHOW_TEXT), list = [];
+  while(w.nextNode()) list.push(w.currentNode);
+  list.forEach(n => {
+    if(/^(SCRIPT|STYLE)$/.test(n.parentElement?.tagName)) return;
+    if(!orig.has(n)){ const k = norm(n.nodeValue); if(!EN[k]) return; orig.set(n, {raw:n.nodeValue, k}); }
+    const o = orig.get(n); n.nodeValue = lang === "en" ? EN[o.k] : o.raw;
+  });
+}
+function setLang(l){
+  lang = l; try { localStorage.setItem("lang", l); } catch {}
+  document.documentElement.lang = l;
+  document.title = l === "en" ? "Farhan Fadillah | Portfolio" : "Farhan Fadillah | Portofolio";
+  document.querySelectorAll("#lang b").forEach(b => b.classList.toggle("on", b.dataset.l === l));
+  applyLang();
+}
+$("#lang").onclick = () => setLang(lang === "en" ? "id" : "en");
+setLang(lang);

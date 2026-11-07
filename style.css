@@ -96,3 +96,7 @@ footer{text-align:center;padding:2rem;color:var(--muted);border-top:1px solid va
 .thumbs img.on{border-color:var(--amber);opacity:1}
 .detail p{color:var(--muted);margin-bottom:.8rem}
 .project{padding:0;display:block;width:100%}
+.lang{display:flex;gap:2px;padding:3px;border:1px solid var(--line);border-radius:999px;background:none;color:var(--muted);font:500 .78rem Sora,sans-serif;cursor:pointer}
+.lang b{padding:.15rem .6rem;border-radius:999px;font-weight:500;transition:background .2s,color .2s}
+.lang b.on{background:var(--blue);color:#06121f}
+@media(max-width:640px){.nav{gap:.5rem;padding:.6rem 3vw}.nav nav{gap:.5rem;font-size:.72rem}}
