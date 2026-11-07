@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Farhan Fadillah | Portofolio</title>
+<meta name="description" content="Portofolio Farhan Fadillah: lulusan Informatika, IT Operations, Data Analyst dan Network Engineering.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500&family=Sora:wght@500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<canvas id="net" aria-hidden="true"></canvas>
+<header class="nav">
+  <a href="#home" class="logo">FF</a>
+  <nav>
+    <a href="#tentang">Tentang</a><a href="#skill">Skill</a><a href="#pengalaman">Pengalaman</a><a href="#project">Project</a><a href="#kontak">Kontak</a>
+  </nav>
+</header>
+
+<main>
+<section id="home" class="hero">
+  <div class="hero-text">
+    <p class="hello">Halo, saya</p>
+    <h1>Farhan Fadillah</h1>
+    <p class="role"><span id="typed"></span><i class="caret"></i></p>
+    <p class="lead">Fresh graduate Informatika yang terbiasa mengurus perangkat, aset, dan infrastruktur TI di perusahaan keuangan, dan tertarik mengolah data serta membangun jaringan.</p>
+    <div class="cta">
+      <a class="btn primary" href="#project">Lihat project</a>
+      <a class="btn" href="CV-Farhan_Fadillah.pdf" download>Unduh CV</a>
+    </div>
+  </div>
+  <div class="photo">
+    <img src="foto.jpg" alt="Foto Farhan Fadillah" onerror="this.replaceWith(Object.assign(document.createElement('span'),{textContent:'FF'}))">
+  </div>
+</section>
+
+<section id="tentang" class="reveal">
+  <h2>Tentang saya</h2>
+  <div class="about">
+    <p>Saya lulusan S1 Informatika Universitas Gunadarma (2021-2025) dengan IPK 3.73. Pengalaman magang saya di IT Operations PT Bursa Efek Indonesia mencakup konfigurasi perangkat, migrasi data, pengelolaan aset TI, dokumentasi, dan koordinasi dengan vendor.</p>
+    <p>Saat ini saya magang di IT Infrastruktur PT Bank Mandiri, mempelajari solusi endpoint management. Saya bisa bekerja mandiri maupun dalam tim, dan cepat beradaptasi di lingkungan profesional.</p>
+    <ul class="stats">
+      <li><b data-count="3.73" data-dec="2">0</b>IPK S1 Informatika</li>
+      <li><b data-count="2">0</b>Perusahaan tempat magang</li>
+      <li><b data-count="6">0</b>Pelatihan jaringan dan pemrograman</li>
+    </ul>
+  </div>
+</section>
+
+<section id="skill" class="reveal">
+  <h2>Skill</h2>
+  <div class="skills" id="skills"></div>
+</section>
+
+<section id="pengalaman" class="reveal">
+  <h2>Pengalaman</h2>
+  <ol class="timeline">
+    <li>
+      <time>Agustus 2026 - sekarang</time>
+      <h3>IT Infrastruktur (Endpoint Management), magang</h3>
+      <p class="org">PT Bank Mandiri (Persero) Tbk</p>
+      <ul>
+        <li>Validasi dan monitoring data rekaman CCTV kantor cabang agar lengkap dan sesuai.</li>
+        <li>Menganalisis solusi endpoint management (Ivanti LANDESK, MobileIron, Microsoft Intune): pengelolaan perangkat, distribusi software, kebijakan keamanan, compliance, dan remote support.</li>
+      </ul>
+    </li>
+    <li>
+      <time>April - Agustus 2026</time>
+      <h3>IT Operations (System Management), magang</h3>
+      <p class="org">PT Bursa Efek Indonesia</p>
+      <ul>
+        <li>Konfigurasi laptop baru, migrasi data dan akun pengguna, lalu re-imaging perangkat lama.</li>
+        <li>Menyusun dokumentasi dan panduan peremajaan laptop.</li>
+        <li>Mendata dan memantau aset IT di gudang dan buffer stock.</li>
+        <li>Mengelola data hard disk disposal dan menjalankan degaussing sesuai prosedur.</li>
+        <li>Koordinasi vendor untuk preventive maintenance dan verifikasi laporan maintenance.</li>
+      </ul>
+    </li>
+  </ol>
+</section>
+
+<section id="pendidikan" class="reveal">
+  <h2>Pendidikan, sertifikasi, dan pelatihan</h2>
+  <div class="grid3">
+    <article class="card"><h3>S1 Informatika</h3><p>Universitas Gunadarma</p><p class="muted">2021-2025, IPK 3.73</p></article>
+    <article class="card"><h3>Sertifikasi</h3>
+      <p>Memulai Pemrograman dengan Python</p><p class="muted">Dicoding, Juni 2025</p>
+      <p>Belajar Dasar Visualisasi Data</p><p class="muted">Dicoding, Oktober 2025</p></article>
+    <article class="card"><h3>Pelatihan (LPK Gunadarma)</h3>
+      <p class="small">Fundamental Networking (2022)<br>Local Area Network Using Cisco Router (2023)<br>Go-Lang for Beginner (2023)<br>JavaScript Programming Language Fundamental (2024)<br>Network Design and Configuration Using Switch Device (2024)<br>Local Area Network Design and Configuration (2025)</p></article>
+  </div>
+</section>
+
+<section id="project" class="reveal">
+  <h2>Project</h2>
+  <div class="projects" id="projects"></div>
+</section>
+
+<section id="kontak" class="reveal">
+  <h2>Kontak</h2>
+  <p class="lead">Terbuka untuk peluang di IT Operations, Infrastruktur, Data Analyst, dan Network Engineering.</p>
+  <div class="contact">
+    <a class="btn primary" href="mailto:farhanfadillah3227@gmail.com">farhanfadillah3227@gmail.com</a>
+    <a class="btn" href="https://wa.me/6282118043104" target="_blank" rel="noopener">WhatsApp 0821-1804-3104</a>
+    <a class="btn" href="https://www.linkedin.com/in/farhanfadillah14" target="_blank" rel="noopener">LinkedIn</a>
+  </div>
+</section>
+</main>
+<footer>Farhan Fadillah, Cibitung, Kab. Bekasi</footer>
+<script src="script.js"></script>
+</body>
+</html>
