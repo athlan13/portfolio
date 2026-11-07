@@ -223,3 +223,21 @@ function setLang(l){
 }
 $("#lang").onclick = () => setLang(lang === "en" ? "id" : "en");
 setLang(lang);
+
+// ===== Menu menyala sesuai bagian yang sedang dilihat =====
+(() => {
+  const nav = document.querySelector(".nav nav"), links = [...nav.querySelectorAll("a")];
+  const alias = {pendidikan: "sertifikat"};
+  const setActive = id => {
+    id = alias[id] || id;
+    links.forEach(a => {
+      const on = a.getAttribute("href") === "#" + id;
+      a.classList.toggle("on", on);
+      if(on){ a.setAttribute("aria-current", "true");
+        if(nav.scrollWidth > nav.clientWidth) nav.scrollTo({left: a.offsetLeft - (nav.clientWidth - a.offsetWidth) / 2, behavior: "smooth"}); }
+      else a.removeAttribute("aria-current");
+    });
+  };
+  const spy = new IntersectionObserver(es => es.forEach(e => { if(e.isIntersecting) setActive(e.target.id); }), {rootMargin: "-45% 0px -50% 0px"});
+  document.querySelectorAll("main > section").forEach(s => spy.observe(s));
+})();
