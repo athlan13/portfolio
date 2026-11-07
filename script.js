@@ -108,7 +108,7 @@ async function openCert(c){
 }
 
 // Efek ketik pada role
-const roles = ["IT Operations", "Data Analyst", "Network Engineering"];
+const roles = ["IT Operations", "IT Infrastructure", "Data Analyst", "Network Engineering"];
 let ri = 0, ci = 0, del = false;
 (function type(){
   const w = roles[ri];
