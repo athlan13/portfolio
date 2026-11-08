@@ -11,7 +11,7 @@ const SKILLS = [
 ];
 // ===== Data project: images = daftar gambar di folder img/, detail = paragraf deskripsi =====
 const PROJECTS = [
-  {title:"Klasifikasi Keamanan Lalu Lintas Jaringan", desc:"Tugas akhir/skripsi: klasifikasi lalu lintas jaringan dengan Random Forest Classifier.", images:["img/skripsi-1.jpg","img/skripsi-2.jpg","img/skripsi-3.jpg","img/skripsi-4.jpg","img/skripsi-5.jpg"], detail:["Tugas akhir/skripsi S1 Informatika Universitas Gunadarma tentang klasifikasi keamanan lalu lintas jaringan menggunakan algoritma Random Forest Classifier."], tags:["Python","Machine Learning","Network Security"], link:""},
+  {title:"Klasifikasi Keamanan Lalu Lintas Jaringan", desc:"Tugas akhir/skripsi: klasifikasi lalu lintas jaringan dengan Random Forest Classifier.", images:["img/skripsi-1.jpg","img/skripsi-2.jpg","img/skripsi-3.jpg","img/skripsi-4.jpg","img/skripsi-5.jpg","img/skripsi-6.jpg"], detail:["Tugas akhir/skripsi S1 Informatika Universitas Gunadarma tentang klasifikasi keamanan lalu lintas jaringan menggunakan algoritma Random Forest Classifier."], tags:["Python","Machine Learning","Network Security"], link:""},
   {title:"Game 2D Android dengan Godot Engine", desc:"Penulisan ilmiah: pembuatan aplikasi game 2D berbasis Android.", images:["img/game-1.jpg","img/game-2.jpg","img/game-3.jpg"], detail:["Penulisan ilmiah di Universitas Gunadarma tentang pembuatan aplikasi game 2D berbasis Android dengan menggunakan Godot Engine.","Game yang dibuat bernama Koin Jumper, game 2 dimensi dengan tujuan mengumpulkan poin di setiap level. Terdapat 4 level yang bebas dipilih pemain, dan setiap level memiliki rintangannya masing-masing.","Di setiap level terdapat buah yang berfungsi sebagai koin penentu skor, serta objek piala untuk berpindah level. Pemain mengontrol karakter lewat tombol di layar (kiri, kanan, dan lompat), dan skor ditampilkan selama bermain."], tags:["Godot","Android","Game Dev"], link:""}
 ];
 // ===== Data sertifikat: taruh PDF di folder sertifikat/ =====
@@ -19,10 +19,12 @@ const LPK = "Lembaga Pengembangan Komputerisasi Universitas Gunadarma";
 const CERTS = [
   {g:"sertifikasi", title:"Memulai Pemrograman dengan Python", issuer:"Dicoding Indonesia", date:"Juni 2025 - Juni 2028", file:"sertifikat/python-dicoding.pdf"},
   {g:"sertifikasi", title:"Belajar Dasar Visualisasi Data", issuer:"Dicoding Indonesia", date:"Oktober 2025 - Oktober 2028", file:"sertifikat/visualisasi-data-dicoding.pdf"},
+  {g:"sertifikasi", title:"Introduction to Cybersecurity", issuer:"Cisco Networking Academy", date:"April 2026", file:"sertifikat/cisco-cybersecurity.pdf"},
   {g:"pelatihan", title:"Fundamental Networking", issuer:LPK, date:"Agustus 2022", file:"sertifikat/fundamental-networking.pdf"},
   {g:"pelatihan", title:"Go-Lang for Beginner", issuer:LPK, date:"Februari 2023", file:"sertifikat/golang.pdf"},
   {g:"pelatihan", title:"Local Area Network Using Cisco Router", issuer:LPK, date:"Agustus 2023", file:"sertifikat/lan-cisco-router.pdf"},
   {g:"pelatihan", title:"JavaScript Programming Language Fundamental", issuer:LPK, date:"Februari 2024", file:"sertifikat/javascript.pdf"},
+  {g:"pelatihan", title:"Wide Area Network Using Cisco Router for Intermediate", issuer:LPK, date:"Agustus 2024", file:"sertifikat/wan-cisco-router.pdf"},
   {g:"pelatihan", title:"Network Design and Configuration Using Switch Device", issuer:LPK, date:"23 - 28 September 2024", file:"sertifikat/network-switch.pdf"},
   {g:"pelatihan", title:"Local Area Network Design and Configuration", issuer:LPK, date:"27 Mei - 14 Juni 2025", file:"sertifikat/lan-design.pdf"}
 ];
@@ -86,6 +88,7 @@ async function renderPdf(file, canvas, width, page = 1){
   await pg.render({canvasContext: canvas.getContext("2d"), viewport: v}).promise;
   return pdf.numPages;
 }
+const isImg = f => /\.(jpe?g|png|webp)$/i.test(f);
 const card = (c,i) => `<button class="ccard" data-i="${i}"><div class="cthumb"><canvas></canvas></div><strong>${c.title}</strong><span>${c.issuer}</span><small>${c.date}</small></button>`;
 ["sertifikasi","pelatihan"].forEach(g => {
   const box = $("#certs-" + g);
@@ -94,10 +97,16 @@ const card = (c,i) => `<button class="ccard" data-i="${i}"><div class="cthumb"><
 });
 document.querySelectorAll(".ccard").forEach(b => {
   const c = CERTS[b.dataset.i], box = b.querySelector(".cthumb");
+  if(isImg(c.file)){ box.innerHTML = `<img src="${c.file}" alt="${c.title}" loading="lazy">`; box.querySelector("img").onerror = () => { box.textContent = "Sertifikat menyusul"; applyLang(box); }; return; }
   renderPdf(c.file, box.querySelector("canvas"), 420).catch(() => { box.textContent = "Sertifikat menyusul"; applyLang(box); });
 });
 async function openCert(c){
   const w = document.createElement("div"); w.className = "certview";
+  if(isImg(c.file)){
+    w.innerHTML = `<img src="${c.file}" alt="${c.title}">`;
+    w.querySelector("img").onerror = () => { w.innerHTML = `<p class="muted">${T("Sertifikat belum bisa ditampilkan. Pastikan file "+c.file+" sudah diunggah.","The certificate cannot be displayed. Make sure "+c.file+" has been uploaded.")}</p>`; };
+    openModal(c.title, w); return;
+  }
   w.innerHTML = `<canvas></canvas><div class="pager" hidden><button class="btn prev2">Sebelumnya</button><span></span><button class="btn next2">Berikutnya</button></div>`;
   openModal(c.title, w);
   const can = w.querySelector("canvas"), pg = w.querySelector(".pager"); let n = 1, total = 1;
@@ -192,7 +201,7 @@ const EN = {
   "Pendidikan":"Education","S1 Informatika":"Bachelor of Informatics (S1)","Universitas Gunadarma":"Gunadarma University","2021 - 2025, IPK 3.73":"2021 - 2025, GPA 3.73",
   "Sertifikasi":"Certifications","Pelatihan":"Training",
   "Juni 2025 - Juni 2028":"June 2025 - June 2028","Oktober 2025 - Oktober 2028":"October 2025 - October 2028",
-  "Agustus 2022":"August 2022","Februari 2023":"February 2023","Agustus 2023":"August 2023","Februari 2024":"February 2024","27 Mei - 14 Juni 2025":"27 May - 14 June 2025",
+  "Agustus 2022":"August 2022","Februari 2023":"February 2023","Agustus 2023":"August 2023","Agustus 2024":"August 2024","Februari 2024":"February 2024","27 Mei - 14 Juni 2025":"27 May - 14 June 2025",
   "Klasifikasi Keamanan Lalu Lintas Jaringan":"Network Traffic Security Classification",
   "Tugas akhir/skripsi: klasifikasi lalu lintas jaringan dengan Random Forest Classifier.":"Final project/thesis: network traffic classification using a Random Forest Classifier.",
   "Tugas akhir/skripsi S1 Informatika Universitas Gunadarma tentang klasifikasi keamanan lalu lintas jaringan menggunakan algoritma Random Forest Classifier.":"Undergraduate thesis in Informatics at Gunadarma University on network traffic security classification using the Random Forest Classifier algorithm.",
