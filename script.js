@@ -11,7 +11,7 @@ const SKILLS = [
 ];
 // ===== Data project: images = daftar gambar di folder img/, detail = paragraf deskripsi =====
 const PROJECTS = [
-  {title:"Klasifikasi Keamanan Lalu Lintas Jaringan", desc:"Tugas akhir/skripsi: klasifikasi lalu lintas jaringan dengan Random Forest Classifier.", images:["img/skripsi-1.jpg","img/skripsi-2.jpg"], detail:["Tugas akhir/skripsi S1 Informatika Universitas Gunadarma tentang klasifikasi keamanan lalu lintas jaringan menggunakan algoritma Random Forest Classifier."], tags:["Python","Machine Learning","Network Security"], link:""},
+  {title:"Klasifikasi Keamanan Lalu Lintas Jaringan", desc:"Tugas akhir/skripsi: klasifikasi lalu lintas jaringan dengan Random Forest Classifier.", images:["img/skripsi-1.jpg","img/skripsi-2.jpg","img/skripsi-3.jpg","img/skripsi-4.jpg","img/skripsi-5.jpg"], detail:["Tugas akhir/skripsi S1 Informatika Universitas Gunadarma tentang klasifikasi keamanan lalu lintas jaringan menggunakan algoritma Random Forest Classifier."], tags:["Python","Machine Learning","Network Security"], link:""},
   {title:"Game 2D Android dengan Godot Engine", desc:"Penulisan ilmiah: pembuatan aplikasi game 2D berbasis Android.", images:["img/game-1.jpg","img/game-2.jpg"], detail:["Penulisan ilmiah di Universitas Gunadarma tentang pembuatan aplikasi game 2D berbasis Android dengan menggunakan Godot Engine."], tags:["Godot","Android","Game Dev"], link:""}
 ];
 // ===== Data sertifikat: taruh PDF di folder sertifikat/ =====
