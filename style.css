@@ -118,3 +118,37 @@ body{max-width:100%;overflow-x:clip}
 .cthumb img{width:100%;height:100%;object-fit:cover}
 .certview>img{width:100%;height:auto;display:block;border-radius:8px}
 .cap{color:var(--muted);margin:.7rem 0 0;font-size:.95rem;min-height:1.6em}
+
+/* ===== Animasi dan polesan tambahan ===== */
+@keyframes rise{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}
+@keyframes shimmer{to{background-position:-200% center}}
+.hero-text>*{animation:rise .9s cubic-bezier(.2,.8,.2,1) both}
+.hero-text>.hello{animation-delay:.1s}.hero-text>.role{animation-delay:.34s}.hero-text>.lead{animation-delay:.46s}.hero-text>.cta{animation-delay:.58s}
+.hero-text>h1{color:#e6edf6;background:linear-gradient(100deg,#fff 20%,#9fd8ff 45%,var(--amber) 70%,#fff 95%);background-size:200% auto;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:rise .9s .2s cubic-bezier(.2,.8,.2,1) both,shimmer 9s 1.2s linear infinite}
+.photo{animation:rise 1s .5s cubic-bezier(.2,.8,.2,1) both,float 6s 1.5s ease-in-out infinite}
+.photo .inner{transition:transform .25s ease-out;will-change:transform}
+#net{transition:transform .5s ease-out}
+h2{position:relative;display:inline-block}
+h2::after{content:"";display:block;height:3px;width:0;margin-top:.55rem;border-radius:3px;background:linear-gradient(90deg,var(--amber),transparent);transition:width .9s .25s}
+.show h2::after{width:84px}
+.timeline{border-left:0!important;position:relative}
+.timeline::before{content:"";position:absolute;left:-1px;top:.4rem;bottom:0;width:2px;background:linear-gradient(var(--amber),var(--blue) 60%,transparent);transform:scaleY(0);transform-origin:top;transition:transform 1.6s ease .2s}
+.show .timeline::before{transform:scaleY(1)}
+.skill,.ccard,.project,.card{position:relative;isolation:isolate}
+.skill::before,.ccard::before,.project::before,.card::before{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;opacity:0;transition:opacity .3s;z-index:-1;background:radial-gradient(360px circle at var(--mx,50%) var(--my,50%),rgba(91,192,255,.16),transparent 60%)}
+.skill:hover::before,.ccard:hover::before,.project:hover::before,.card:hover::before{opacity:1}
+.btn.primary{position:relative;overflow:hidden}
+.btn.primary::after{content:"";position:absolute;inset:0;background:linear-gradient(110deg,transparent 30%,rgba(255,255,255,.45) 50%,transparent 70%);transform:translateX(-120%)}
+.btn.primary:hover::after{transform:translateX(120%);transition:transform .7s}
+.marquee{position:relative;z-index:1;overflow:hidden;border-block:1px solid var(--line);background:rgba(19,35,58,.55);-webkit-mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent);mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent)}
+.track{display:flex;width:max-content;padding:1rem 0;animation:scroll 34s linear infinite}
+.marquee:hover .track{animation-play-state:paused}
+.track span{display:flex;align-items:center;gap:.7rem;margin-right:3.2rem;color:var(--muted);font:500 1rem Sora,sans-serif;white-space:nowrap}
+.track img{width:24px;height:24px;filter:invert(1) opacity(.7)}
+@keyframes scroll{to{transform:translateX(-50%)}}
+
+/* ===== Perapian jarak dan daftar panjang ===== */
+section{padding:4rem 5vw}
+@media(max-width:640px){section{padding:3rem 5vw}.photo{width:min(230px,60vw)}}
+.morebtn{margin-top:.9rem;background:none;border:1px solid var(--line);color:var(--blue);border-radius:999px;padding:.35rem 1.1rem;font:inherit;font-size:.88rem;cursor:pointer;transition:border-color .2s,transform .2s}
+.morebtn:hover{border-color:var(--blue);transform:translateY(-2px)}

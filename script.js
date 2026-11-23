@@ -11,7 +11,7 @@ const SKILLS = [
 ];
 // ===== Data project: images = daftar gambar di folder img/, detail = paragraf deskripsi =====
 const PROJECTS = [
-  {title:"Klasifikasi Keamanan Lalu Lintas Jaringan", desc:"Tugas akhir/skripsi: klasifikasi lalu lintas jaringan dengan Random Forest Classifier.", images:["img/skripsi-1.jpg","img/skripsi-2.jpg","img/skripsi-3.jpg","img/skripsi-4.jpg","img/skripsi-5.jpg"], captions:["Alur penelitian dari dataset sampai evaluasi model.","Distribusi label: 536 data Unencrypted (53,6%) dan 464 data Encrypted (46,4%).","Komposisi data latih dan uji pada rasio 70:30, 80:20, dan 90:10, dengan proporsi kelas yang tetap terjaga.","Entropy menjadi fitur paling berpengaruh (0,24), sedangkan Source Port tidak berpengaruh (0,00).","Confusion matrix rasio 80:20: seluruh 200 data uji terklasifikasi dengan benar (107 Unencrypted dan 93 Encrypted).","Accuracy, Precision, Recall, dan F1-Score bernilai 100% pada ketiga rasio pembagian data.","Hasil akhir klasifikasi: data uji beserta label aktual, hasil prediksi model, dan status kebenarannya."], detail:["Tugas akhir/skripsi S1 Informatika Universitas Gunadarma tentang klasifikasi keamanan lalu lintas jaringan menggunakan algoritma Random Forest Classifier.","Dataset berisi 1.000 aliran jaringan (536 Unencrypted dan 464 Encrypted) dengan enam fitur: Packet Count, Avg Packet Size, Flow Duration, Entropy, Source Port, dan Destination Port. Empat fitur numerik dinormalisasi dengan MinMaxScaler sebelum model dilatih.","Model Random Forest dengan 100 pohon diuji pada tiga rasio pembagian data (70:30, 80:20, dan 90:10) secara stratified. Pada ketiga rasio, Accuracy, Precision, Recall, dan F1-Score mencapai 100%, dan Entropy menjadi fitur yang paling berpengaruh.","Hasil akhir berupa tabel data uji yang memuat fitur setiap aliran jaringan, label aktual, dan hasil prediksi model (Unencrypted atau Encrypted).","Hasil yang sangat tinggi ini menunjukkan pola kedua kelas pada dataset sangat jelas terpisah; pengujian pada dataset yang lebih besar dan lebih beragam masih diperlukan untuk menilai kemampuan model secara umum."], tags:["Python","Machine Learning","Network Security"], link:""},
+  {title:"Klasifikasi Keamanan Lalu Lintas Jaringan", desc:"Tugas akhir/skripsi: klasifikasi lalu lintas jaringan dengan Random Forest Classifier.", images:["img/skripsi-1.jpg","img/skripsi-2.jpg","img/skripsi-3.jpg","img/skripsi-4.jpg","img/skripsi-5.jpg","img/skripsi-6.jpg","img/skripsi-7.jpg"], captions:["Alur penelitian dari dataset sampai evaluasi model.","Distribusi label: 536 data Unencrypted (53,6%) dan 464 data Encrypted (46,4%).","Komposisi data latih dan uji pada rasio 70:30, 80:20, dan 90:10, dengan proporsi kelas yang tetap terjaga.","Entropy menjadi fitur paling berpengaruh (0,24), sedangkan Source Port tidak berpengaruh (0,00).","Confusion matrix rasio 80:20: seluruh 200 data uji terklasifikasi dengan benar (107 Unencrypted dan 93 Encrypted).","Accuracy, Precision, Recall, dan F1-Score bernilai 100% pada ketiga rasio pembagian data.","Hasil akhir klasifikasi: data uji beserta label aktual, hasil prediksi model, dan status kebenarannya."], detail:["Tugas akhir/skripsi S1 Informatika Universitas Gunadarma tentang klasifikasi keamanan lalu lintas jaringan menggunakan algoritma Random Forest Classifier.","Dataset berisi 1.000 aliran jaringan (536 Unencrypted dan 464 Encrypted) dengan enam fitur: Packet Count, Avg Packet Size, Flow Duration, Entropy, Source Port, dan Destination Port. Empat fitur numerik dinormalisasi dengan MinMaxScaler sebelum model dilatih.","Model Random Forest dengan 100 pohon diuji pada tiga rasio pembagian data (70:30, 80:20, dan 90:10) secara stratified. Pada ketiga rasio, Accuracy, Precision, Recall, dan F1-Score mencapai 100%, dan Entropy menjadi fitur yang paling berpengaruh.","Hasil akhir berupa tabel data uji yang memuat fitur setiap aliran jaringan, label aktual, dan hasil prediksi model (Unencrypted atau Encrypted).","Hasil yang sangat tinggi ini menunjukkan pola kedua kelas pada dataset sangat jelas terpisah; pengujian pada dataset yang lebih besar dan lebih beragam masih diperlukan untuk menilai kemampuan model secara umum."], tags:["Python","Machine Learning","Network Security"], link:""},
   {title:"Game 2D Android dengan Godot Engine", desc:"Penulisan ilmiah: pembuatan aplikasi game 2D berbasis Android.", images:["img/game-1.jpg","img/game-2.jpg","img/game-3.jpg"], detail:["Penulisan ilmiah di Universitas Gunadarma tentang pembuatan aplikasi game 2D berbasis Android dengan menggunakan Godot Engine.","Game yang dibuat bernama Koin Jumper, game 2 dimensi dengan tujuan mengumpulkan poin di setiap level. Terdapat 4 level yang bebas dipilih pemain, dan setiap level memiliki rintangannya masing-masing.","Di setiap level terdapat buah yang berfungsi sebagai koin penentu skor, serta objek piala untuk berpindah level. Pemain mengontrol karakter lewat tombol di layar (kiri, kanan, dan lompat), dan skor ditampilkan selama bermain."], tags:["Godot","Android","Game Dev"], link:""},
   {title:"Desain Aplikasi TemanPELNI (Figma)", desc:"Tugas praktikum: desain antarmuka dan prototipe aplikasi mobile layanan pelayaran.", images:["img/pelni-1.jpg","img/pelni-2.jpg","img/pelni-3.jpg","img/pelni-4.jpg"], captions:["Tiga halaman utama aplikasi: Beranda, Promo & vouchers, dan Login.","Beranda dengan menu layanan Tiket Kapal, Kirim Barang, Keagenan, Sewa Aset, dan Hotel Bahtera.","Halaman Login dengan form email dan password, tautan Lupa kata sandi, dan tautan Daftar.","Alur prototipe: lima layar saling terhubung di Figma."], detail:["Tugas praktikum merancang antarmuka dan prototipe aplikasi mobile bertema layanan PELNI menggunakan Figma. Ini adalah desain konsep untuk keperluan belajar, bukan aplikasi resmi PELNI.","Aplikasi bernama TemanPELNI memiliki halaman Beranda dengan menu layanan (Tiket Kapal, Kirim Barang, Keagenan, Sewa Aset, dan Hotel Bahtera), halaman Promo & vouchers, serta halaman Login dengan form email dan password.","Selain tiga halaman utama, dirancang juga halaman Pesan Tiket dan Kirim Barang. Seluruh layar dihubungkan dalam prototipe Figma sehingga alur antar-halaman dapat dicoba, dengan navigasi bawah (home, promo, login) di halaman utama."], tags:["Figma","UI/UX","Prototyping"], link:""}
 ];
@@ -133,7 +133,7 @@ let ri = 0, ci = 0, del = false;
 // Reveal saat scroll + bar skill + hitung angka
 const io = new IntersectionObserver(es => es.forEach(e => {
   if(!e.isIntersecting) return;
-  e.target.classList.add("show");
+  e.target.classList.add("show"); stagger(e.target);
   e.target.querySelectorAll(".bar i").forEach(i => i.style.width = i.dataset.w + "%");
   e.target.querySelectorAll("[data-count]").forEach(el => {
     const end = +el.dataset.count, dec = +(el.dataset.dec||0), t0 = performance.now();
@@ -186,7 +186,7 @@ const EN = {
   "Melakukan validasi dan pendataan perangkat CCTV pada kantor cabang, termasuk pemeriksaan MAC Address, jumlah kamera aktif dan nonaktif, konfigurasi SNTP/email, status perekaman, serta kondisi HDD.":"Validated and recorded CCTV devices at branch offices, including checking MAC addresses, the number of active and inactive cameras, SNTP/email configuration, recording status, and HDD condition.",
   "Melakukan pengecekan konfigurasi dan kondisi perangkat CCTV melalui aplikasi monitoring, termasuk pemeriksaan playback, sinkronisasi waktu, serta identifikasi kendala konektivitas perangkat.":"Checked CCTV device configuration and condition through a monitoring application, including playback checks, time synchronization, and identifying device connectivity issues.",
   "Mengidentifikasi jenis perangkat perekam CCTV yang digunakan pada kantor cabang, baik Digital Video Recorder (DVR) maupun Network Video Recorder (NVR).":"Identified the type of CCTV recorder used at branch offices, either Digital Video Recorder (DVR) or Network Video Recorder (NVR).",
-  "Melakukan validasi data CCTV berdasarkan wilayah operasional (region).":"Processed and validated CCTV data by operational region.",
+  "Melakukan pengolahan dan validasi data CCTV berdasarkan wilayah operasional (region).":"Processed and validated CCTV data by operational region.",
   "Mengeksplorasi fitur Ivanti LANDESK Desktop Management, khususnya fitur Inventory untuk mempelajari pengelolaan inventaris perangkat endpoint.":"Explored Ivanti LANDESK Desktop Management features, especially Inventory, to learn how endpoint device inventory is managed.",
   "Mempelajari fungsi dan alur pengelolaan perangkat endpoint melalui LANDESK serta mengenal solusi Mobile Device Management (MDM) menggunakan MobileIron.":"Learned the functions and workflow of endpoint device management through LANDESK and became familiar with Mobile Device Management (MDM) using MobileIron.",
   "Menyiapkan dan melakukan konfigurasi perangkat laptop baru untuk mendukung kebutuhan operasional pengguna.":"Prepared and configured new laptops to support users' operational needs.",
@@ -232,6 +232,8 @@ const EN = {
   "Beranda dengan menu layanan Tiket Kapal, Kirim Barang, Keagenan, Sewa Aset, dan Hotel Bahtera.":"Home with the service menu: Ship Tickets, Send Goods, Agency, Asset Rental, and Hotel Bahtera.",
   "Halaman Login dengan form email dan password, tautan Lupa kata sandi, dan tautan Daftar.":"Login page with email and password fields, a forgot password link, and a sign-up link.",
   "Alur prototipe: lima layar saling terhubung di Figma.":"Prototype flow: five screens linked together in Figma.",
+  "Lihat selengkapnya":"Show more",
+  "Lihat lebih sedikit":"Show less",
   "Terbuka untuk peluang di IT Operations, Infrastruktur, Data Analyst, dan Network Engineering.":"Open to opportunities in IT Operations, Infrastructure, Data Analyst, and Network Engineering.",
   "Sebelumnya":"Previous","Berikutnya":"Next","Buka project":"Open project","Sertifikat menyusul":"Certificate coming soon"
 };
@@ -274,3 +276,35 @@ setLang(lang);
   const spy = new IntersectionObserver(es => es.forEach(e => { if(e.isIntersecting) setActive(e.target.id); }), {rootMargin: "-45% 0px -50% 0px"});
   document.querySelectorAll("main > section").forEach(s => spy.observe(s));
 })();
+
+// ===== Animasi tambahan =====
+function stagger(sec){ // kartu dan item muncul bergantian
+  if(reduce) return;
+  sec.querySelectorAll(".skills,.certs,.projects,.timeline,.stats").forEach(g => [...g.children].forEach((el,i) =>
+    el.animate([{opacity:0,transform:"translateY(22px)"},{opacity:1,transform:"none"}],{duration:650,delay:120+i*80,easing:"cubic-bezier(.2,.8,.2,1)",fill:"backwards"})));
+}
+$("#track").innerHTML = [0,1].map(() => SKILLS.map(s => `<span><img src="https://cdn.jsdelivr.net/npm/simple-icons@11.14.0/icons/${s.icon}.svg" alt="">${s.name}</span>`).join("")).join("");
+document.addEventListener("pointermove", e => { // cahaya mengikuti kursor pada kartu
+  const t = e.target.closest && e.target.closest(".skill,.ccard,.project,.card"); if(!t) return;
+  const r = t.getBoundingClientRect(); t.style.setProperty("--mx", e.clientX - r.left + "px"); t.style.setProperty("--my", e.clientY - r.top + "px");
+});
+if(!reduce && matchMedia("(hover:hover)").matches){
+  addEventListener("pointermove", e => { // latar jaringan bergeser halus mengikuti kursor
+    cv.style.transform = `translate(${(e.clientX/innerWidth-.5)*-18}px,${(e.clientY/innerHeight-.5)*-18}px) scale(1.04)`; });
+  const box = document.querySelector(".photo"), inner = box && box.querySelector(".inner");
+  if(inner){ // foto miring halus mengikuti kursor
+    box.addEventListener("pointermove", e => { const r = box.getBoundingClientRect(), x = (e.clientX-r.left)/r.width-.5, y = (e.clientY-r.top)/r.height-.5;
+      inner.style.transform = `perspective(700px) rotateY(${x*10}deg) rotateX(${-y*10}deg) scale(1.02)`; });
+    box.addEventListener("pointerleave", () => inner.style.transform = "");
+  }
+}
+
+// Daftar poin yang panjang diringkas: tampilkan 5, sisanya bisa dibuka
+document.querySelectorAll(".timeline ul").forEach(ul => {
+  const items = [...ul.children]; if(items.length <= 6) return;
+  const extra = items.slice(5); extra.forEach(li => li.hidden = true);
+  const b = document.createElement("button"); b.type = "button"; b.className = "morebtn"; b.textContent = "Lihat selengkapnya";
+  b.setAttribute("aria-expanded", "false"); ul.after(b); applyLang(b);
+  b.onclick = () => { const open = extra[0].hidden; extra.forEach(li => li.hidden = !open);
+    b.textContent = open ? "Lihat lebih sedikit" : "Lihat selengkapnya"; b.setAttribute("aria-expanded", String(open)); applyLang(b); };
+});
